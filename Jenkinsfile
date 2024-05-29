@@ -23,43 +23,37 @@ pipeline {
             }
         }
 
- /*     stage('Building Image') {
+        stage('Building Jar') {
               steps{
                 script {
-                  bat './mvnw spring-boot:build-image'
-                  //dockerImage = docker.build registry + ":latest"
+                    try {
+                         Build jar and image file
+                         bat './mvnw spring-boot:build-image'
+                    } catch (Exception e) {
+                        // Handle the error
+                        //currentBuild.result = 'FAILURE'
+                        error("Build failed: ${e.message}")
+                    }                 
                 }
               }
          }
-   */
-         stage('Deploy Image') {
+
+        stage('Building Image') {
               steps{
-                 script {
-                    dockerImage = docker.build registry + ":latest" 
-                    docker.withRegistry( '', registryCredential ) {
-                    dockerImage.push()
-                  }
+                script {
+                  dockerImage = docker.build registry + ":latest"
                 }
               }
-         }
-   
-       /* stage("Docker Build & Push"){
-            steps{
-                script{
-                        bat './mvnw spring-boot:build-image'
-                        dockerImage = docker.build registry + ":latest"
-                        docker.withRegistry( '', registryCredential ) {
-                           dockerImage.push()
-                        }
-                        //withDockerRegistry(credentialsId: 'dockercred', toolName: 'docker') {
-                            // bat "docker build -t cmaheshbl/pet-clinic ."
-                            // bat "docker tag cmaheshbl/pet-clinic cmaheshbl/pet-clinic:latest "
-                            // bat "docker push cmaheshbl/pet-clinic:latest "
-                    
-                    //}
-                }
-            }
         }
-    */
+        
+        stage('Deploy Image') {
+          steps{
+             script {
+                docker.withRegistry( '', registryCredential ) {
+                dockerImage.push()
+              }
+            }
+          }
+        }
     }
 }

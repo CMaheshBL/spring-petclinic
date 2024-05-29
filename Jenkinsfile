@@ -27,13 +27,14 @@ pipeline {
               steps{
                 script {
                   bat './mvnw spring-boot:build-image'
-                  dockerImage = docker.build registry + ":latest"
+                  //dockerImage = docker.build registry + ":latest"
                 }
               }
          }
          stage('Deploy Image') {
               steps{
                  script {
+                    dockerImage = docker.build registry + ":latest" 
                     docker.withRegistry( '', registryCredential ) {
                     dockerImage.push()
                   }

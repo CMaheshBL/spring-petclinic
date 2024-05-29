@@ -1,5 +1,5 @@
 # Alpine Linux with OpenJDK JRE
-FROM openjdk:8-jre-alpine
+FROM openjdk:8u342-jre-windowsservercore-ltsc2022
 
 RUN apk --no-cache add curl
 

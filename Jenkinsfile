@@ -26,6 +26,7 @@ pipeline {
      /*   stage('Building Image') {
               steps{
                 script {
+                  bat './mvnw spring-boot:build-image'
                   dockerImage = docker.build registry + ":latest"
                 }
               }
@@ -43,12 +44,17 @@ pipeline {
         stage("Docker Build & Push"){
             steps{
                 script{
-                        withDockerRegistry(credentialsId: 'dockercred', toolName: 'docker') {
-                             bat "docker build -t cmaheshbl/pet-clinic ."
-                             bat "docker tag cmaheshbl/pet-clinic cmaheshbl/pet-clinic:latest "
-                             bat "docker push cmaheshbl/pet-clinic:latest "
+                        bat './mvnw spring-boot:build-image'
+                        dockerImage = docker.build registry + ":latest"
+                        docker.withRegistry( '', registryCredential ) {
+                           dockerImage.push()
+                        }
+                        //withDockerRegistry(credentialsId: 'dockercred', toolName: 'docker') {
+                            // bat "docker build -t cmaheshbl/pet-clinic ."
+                            // bat "docker tag cmaheshbl/pet-clinic cmaheshbl/pet-clinic:latest "
+                            // bat "docker push cmaheshbl/pet-clinic:latest "
                     
-                    }
+                    //}
                 }
             }
         }

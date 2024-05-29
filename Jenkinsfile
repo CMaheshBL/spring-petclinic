@@ -39,8 +39,8 @@ pipeline {
                     } catch (Exception e) {
                         // Handle the error
                         //currentBuild.result = 'FAILURE'
-                        echo err.getMessage()
-                        echo currentBuild.result
+                        echo "Error Message" + err.getMessage()
+                        //echo currentBuild.result
                         //error("Build failed: ${e.message}")
                     }                 
                 }

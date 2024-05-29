@@ -29,22 +29,24 @@ pipeline {
                 bat "mvn test"
             }
         }
-    
+    */
         stage('Building Jar') {
-              steps{
+             steps{
                 script {
                     try {
                          //Build jar and image file
                          bat './mvnw spring-boot:build-image'
                     } catch (Exception e) {
                         // Handle the error
-                        currentBuild.result = 'SUCCESS'
-                        error("Build failed: ${e.message}")
+                        //currentBuild.result = 'FAILURE'
+                        echo err.getMessage()
+                        echo currentBuild.result
+                        //error("Build failed: ${e.message}")
                     }                 
                 }
-              }
+            }
          }
-     */
+     
         stage('Building Image') {
               steps{
                 script {

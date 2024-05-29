@@ -29,7 +29,7 @@ pipeline {
                 bat "mvn test"
             }
         }
-    */
+    
         stage('Building Jar') {
               steps{
                 script {
@@ -44,7 +44,7 @@ pipeline {
                 }
               }
          }
-
+     */
         stage('Building Image') {
               steps{
                 script {

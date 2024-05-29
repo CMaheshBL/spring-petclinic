@@ -27,7 +27,7 @@ pipeline {
               steps{
                 script {
                     try {
-                         Build jar and image file
+                         //Build jar and image file
                          bat './mvnw spring-boot:build-image'
                     } catch (Exception e) {
                         // Handle the error

@@ -23,7 +23,7 @@ pipeline {
             }
         }
 
-     /*   stage('Building Image') {
+      stage('Building Image') {
               steps{
                 script {
                   bat './mvnw spring-boot:build-image'
@@ -40,8 +40,8 @@ pipeline {
                 }
               }
          }
-      */
-        stage("Docker Build & Push"){
+   
+       /* stage("Docker Build & Push"){
             steps{
                 script{
                         bat './mvnw spring-boot:build-image'
@@ -58,6 +58,6 @@ pipeline {
                 }
             }
         }
-    
+    */
     }
 }

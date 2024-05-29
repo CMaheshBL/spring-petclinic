@@ -1,5 +1,5 @@
 # Alpine Linux with OpenJDK JRE
-FROM openjdk:8u342-jre-windowsservercore-ltsc2022
+FROM openjdk:openjdk:11-jre-slim
 
 EXPOSE 8181
 

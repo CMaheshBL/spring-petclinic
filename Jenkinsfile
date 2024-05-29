@@ -23,7 +23,7 @@ pipeline {
             }
         }
 
-      stage('Building Image') {
+ /*     stage('Building Image') {
               steps{
                 script {
                   bat './mvnw spring-boot:build-image'
@@ -31,6 +31,7 @@ pipeline {
                 }
               }
          }
+   */
          stage('Deploy Image') {
               steps{
                  script {

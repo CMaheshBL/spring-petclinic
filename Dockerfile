@@ -1,5 +1,5 @@
 # Alpine Linux with OpenJDK JRE
-FROM openjdk:openjdk:11-jre-slim
+FROM openjdk:11-jre-slim
 
 EXPOSE 8181
 

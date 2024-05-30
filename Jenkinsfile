@@ -3,11 +3,13 @@ pipeline {
         registry = "cmaheshbl/pet-clinic"
         registryCredential = 'dockercred'
         dockerImage = ''
+        BUILD_NUMBER = '1'
     }
     agent any 
     tools {
         jdk 'jdk17'
         maven 'maven_home'
+        jfrog 'jfrog-cli'
     } 
     stages{
         
@@ -63,6 +65,17 @@ pipeline {
               }
             }
           }
+        }
+
+        stage ('Push Image to JFrog Artifactory') {
+            steps {
+                rtDockerPush(
+                    serverId: "chandra2024",
+                    image: "chandra2024.jfrog.io/docker/" + dockerImage,
+                    targetRepo: 'release-docker-local',
+                    properties: 'project-name=jfrog-blog-post;status=stable'
+                )
+            }
         }
     }
 }

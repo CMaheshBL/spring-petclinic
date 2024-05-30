@@ -27,9 +27,7 @@ pipeline {
 
         stage('XRay Scan') {
               steps{
-                script {
-                  jf audit
-                }
+                jf audit
               }
         }
 

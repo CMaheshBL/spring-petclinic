@@ -72,7 +72,7 @@ pipeline {
                // jf 'docker push cmaheshbl/pet-clinic:latest'
                 
                  rtDockerPush(
-                    serverId: "chandra2024",
+                    serverId: "chandra-server",
                     image: "chandra2024.jfrog.io/docker/" + dockerImage,
                     targetRepo: 'release-docker-local',
                     properties: 'project-name=jfrog-blog-post;status=stable'

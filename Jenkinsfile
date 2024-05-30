@@ -3,7 +3,6 @@ pipeline {
         registry = "cmaheshbl/pet-clinic"
         registryCredential = 'dockercred'
         dockerImage = ''
-        BUILD_NUMBER = '1'
     }
     agent any 
     tools {

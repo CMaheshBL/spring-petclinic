@@ -25,11 +25,14 @@ pipeline {
             }
         }
 
-        stage('XRay Scan') {
-              steps{
-                jf audit
-              }
-        }
+        stage ('Xray Maven Scan') {
+            steps {
+                xrayScan (
+                    serverId: "chandra-server",
+                    failBuild: true
+                )
+            }
+        } 
 
      /*
         stage("Test Cases"){

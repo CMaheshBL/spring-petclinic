@@ -30,6 +30,15 @@ pipeline {
             }
         }
 */
+        stage('Xray Initialization'){
+            steps{
+                script {
+                    rtServer = Artifactory.newServer url: 'server', username: username , password: password
+                    buildInfo = Artifactory.newBuildInfo()
+                }
+            }
+        }
+        
         stage ('Xray Maven Scan') {
             steps {
                 xrayScan (

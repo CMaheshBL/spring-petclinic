@@ -56,7 +56,7 @@ pipeline {
                 }
               }
         }
-        
+   /*     
         stage('Deploy Image') {
           steps{
              script {
@@ -66,15 +66,18 @@ pipeline {
             }
           }
         }
-
+    */
         stage ('Push Image to JFrog Artifactory') {
             steps {
-                rtDockerPush(
+                jf 'docker push $dockerImage'
+                
+             /*     rtDockerPush(
                     serverId: "chandra2024",
                     image: "chandra2024.jfrog.io/docker/" + dockerImage,
                     targetRepo: 'release-docker-local',
                     properties: 'project-name=jfrog-blog-post;status=stable'
                 )
+             */   
             }
         }
     }

@@ -69,15 +69,15 @@ pipeline {
     */
         stage ('Push Image to JFrog Artifactory') {
             steps {
-                jf 'docker push cmaheshbl/pet-clinic:latest'
+               // jf 'docker push cmaheshbl/pet-clinic:latest'
                 
-             /*     rtDockerPush(
+                 rtDockerPush(
                     serverId: "chandra2024",
                     image: "chandra2024.jfrog.io/docker/" + dockerImage,
                     targetRepo: 'release-docker-local',
                     properties: 'project-name=jfrog-blog-post;status=stable'
                 )
-             */   
+              
             }
         }
     }

@@ -86,7 +86,7 @@ pipeline {
         stage ('Build Docker Image') {
             steps {
                 script {
-                    docker.build("chandra2024.jfrog.io/docker/" + "pet-clinic:1.0.${env.BUILD_NUMBER}")
+                    docker.build("chandra2024.jfrog.io/project-docker/" + "pet-clinic:1.0.${env.BUILD_NUMBER}")
                 }
             }
         }
@@ -95,9 +95,9 @@ pipeline {
             steps {
                 rtDockerPush(
                     serverId: "chandra-server",
-                    image: "chandra2024.jfrog.io/docker/" + "pet-clinic:1.0.${env.BUILD_NUMBER}",
-                    targetRepo: 'docker',
-                    properties: 'project-name=jfrog-blog-post;status=stable'
+                    image: "chandra2024.jfrog.io/project-docker/" + "pet-clinic:1.0.${env.BUILD_NUMBER}",
+                    targetRepo: 'project-docker-local',
+                    properties: 'project-name=pet-clinic;status=stable'
                 )
             }
         }

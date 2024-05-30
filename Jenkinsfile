@@ -73,7 +73,7 @@ pipeline {
             steps {
                 rtPromote (
                     serverId: "chandra-server",
-                    targetRepo: 'libs-release-local',
+                    targetRepo: 'jfrog-libs-release-local',
                     comment: 'Passed Xray QualityGate',
                     status: 'Released',
                     includeDependencies: false,

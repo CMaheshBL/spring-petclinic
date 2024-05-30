@@ -24,7 +24,13 @@ pipeline {
                 bat "mvn compile"
             }
         }
-
+/*
+        stage("Test Cases"){
+            steps{
+                bat "mvn test"
+            }
+        }
+*/
         stage ('Xray Maven Scan') {
             steps {
                 xrayScan (
@@ -33,14 +39,7 @@ pipeline {
                 )
             }
         } 
-
-     /*
-        stage("Test Cases"){
-            steps{
-                bat "mvn test"
-            }
-        }
-    
+   /* 
         stage('Building Jar') {
              steps{
                 script {
@@ -57,7 +56,7 @@ pipeline {
                 }
             }
          }
-     */
+    
         stage('Building Image') {
               steps{
                 script {
@@ -65,7 +64,7 @@ pipeline {
                 }
               }
         }
-   /*     
+       
         stage('Deploy Image') {
           steps{
              script {
@@ -85,8 +84,7 @@ pipeline {
                     image: "chandra2024.jfrog.io/docker/" + dockerImage,
                     targetRepo: 'release-docker-local',
                     properties: 'project-name=jfrog-blog-post;status=stable'
-                )
-              
+                )              
             }
         }
     }

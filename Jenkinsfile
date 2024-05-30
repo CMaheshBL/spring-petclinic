@@ -25,6 +25,14 @@ pipeline {
             }
         }
 
+        stage('XRay Scan') {
+              steps{
+                script {
+                  jf audit
+                }
+              }
+        }
+
      /*
         stage("Test Cases"){
             steps{

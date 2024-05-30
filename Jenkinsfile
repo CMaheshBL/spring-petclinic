@@ -19,7 +19,7 @@ pipeline {
                 bat "mvn clean compile"
             }
         }
-        
+        /*
         stage ('Artifactory Configuration') {
             steps {
                 rtMavenResolver (
@@ -39,7 +39,7 @@ pipeline {
                 )
             }
         }
-        
+        */
         stage('Build Maven Project') {
             steps {
                 rtMavenRun (

@@ -100,7 +100,7 @@ pipeline {
                     properties: 'project-name=pet-clinic;status=stable'
                 )
            */
-               jfrog rt dp chandra2024.jfrog.io/project-docker/pet-clinic:1.0.65 project-docker-local      
+               jfrog rt dp chandra2024.jfrog.io/project-docker/pet-clinic:1.0.${env.BUILD_NUMBER}  project-docker-local  --build-name=pet-clinic --build-number=1.0.${env.BUILD_NUMBER}    
             }
         }
 

@@ -1,8 +1,8 @@
 # Windows with OpenJDK JRE
-# FROM openjdk:23-jdk-windowsservercore
+FROM openjdk:23-jdk-windowsservercore
 
 # Alpine Linux with OpenJDK JRE
-FROM openjdk:23-slim-bullseye
+#FROM openjdk:23-slim-bullseye
 
 EXPOSE 8181
 

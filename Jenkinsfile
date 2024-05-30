@@ -69,7 +69,7 @@ pipeline {
     */
         stage ('Push Image to JFrog Artifactory') {
             steps {
-                jf 'docker push $dockerImage'
+                jf 'docker push cmaheshbl/pet-clinic:latest'
                 
              /*     rtDockerPush(
                     serverId: "chandra2024",

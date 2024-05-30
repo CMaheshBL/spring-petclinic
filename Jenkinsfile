@@ -19,27 +19,27 @@ pipeline {
                 bat "mvn clean compile"
             }
         }
-        /*
+     
         stage ('Artifactory Configuration') {
             steps {
                 rtMavenResolver (
                     id: 'maven-resolver',
                     serverId: 'chandra-server',
-                    releaseRepo: 'libs-release',
-                    snapshotRepo: 'libs-snapshot'
+                    releaseRepo: 'jfrog-libs-release',
+                    snapshotRepo: 'jfrog-libs-snapshot'
                 )  
                  
                 rtMavenDeployer (
                     id: 'maven-deployer',
                     serverId: 'chandra-server',
-                    releaseRepo: 'libs-release-local',
-                    snapshotRepo: 'libs-snapshot-local',
+                    releaseRepo: 'jfrog-libs-release-local',
+                    snapshotRepo: 'jfrog-libs-snapshot-local',
                     threads: 6,
                     properties: ['BinaryPurpose=Technical-BlogPost', 'Team=DevOps-Acceleration']
                 )
             }
         }
-        */
+       
         stage('Build Maven Project') {
             steps {
                 rtMavenRun (

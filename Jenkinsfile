@@ -7,6 +7,19 @@ pipeline {
     } 
 
     stages {
+
+         stage("Git Checkout"){
+            steps{
+                git branch: 'main', changelog: false, poll: false, url: 'https://github.com/CMaheshBL/spring-petclinic.git'
+            }
+        }
+        
+        stage("Compile"){
+            steps{
+                bat "mvn compile"
+            }
+        }
+        
         stage ('Artifactory Configuration') {
             steps {
                 rtMavenResolver (

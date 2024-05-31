@@ -4,7 +4,6 @@ pipeline {
         jdk 'jdk17'
         maven 'maven_home'
         jfrog 'jfrog-cli'
-        //dockerTool 'docker'
     } 
 
     stages {
@@ -18,6 +17,12 @@ pipeline {
         stage("Compile"){
             steps{
                 bat "mvn compile"
+            }
+        }
+
+        stage("Test Cases"){
+            steps{
+                bat "mvn test"
             }
         }
      
@@ -118,38 +123,7 @@ pipeline {
                     failBuild: true
                 )
             }
-        }         
-        /*
-        stage ('Setup JFrog CLI') {
-            steps {
-                withCredentials([[$class:'UsernamePasswordMultiBinding', credentialsId: 'admin.jfrog', usernameVariable:'ARTIFACTORY_USER', passwordVariable:'ARTIFACTORY_PASS']]) {
-                     sh '''
-                        ./jfrog rt config --url=https://chandra2024.jfrog.io/artifactory --dist-url=https://chandra2024.jfrog.io/distribution --interactive=false --user=${ARTIFACTORY_USER} --password=${ARTIFACTORY_PASS}
-                        ./jfrog rt ping
-                     '''
-                 }
-            }
         }  
-
-        stage ('Create & Sign Release Bundle') {
-            steps {
-                 sh '''
-                    ./jfrog rt rbc --sign EU-LISA-RB 1.0.0 "*.tgz"
-                 '''
-            }
-        }
-
-        //Optional stage - trigger the export process, so all that's left is downloading the Release Bundle
         
-        stage ('Export Release Bundle') {
-            steps {
-                withCredentials([[$class:'UsernamePasswordMultiBinding', credentialsId: 'admin.jfrog', usernameVariable:'ARTIFACTORY_USER', passwordVariable:'ARTIFACTORY_PASS']]) {
-                     sh '''
-                        curl -XPOST 'https://talyi.jfrog.io/distribution/api/v1/export/release_bundle/EU-LISA-RB/1.0.0' -u${ARTIFACTORY_USER}:${ARTIFACTORY_PASS}
-                     '''
-                 }
-            }
-        }
-        */
     }
 }

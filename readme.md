@@ -29,7 +29,9 @@ GitHub link to the repo including (https://github.com/CMaheshBL/spring-petclinic
 **Steps:**
 
 The current testing is done on Windows 11 OS.
-  - Have Docker Desktop installed
+  - Register in JFrog cloud https://jfrog.com/start-free/
+      - In Artifactory create a repository using pre-built setup - Maven and Docker
+  - Have Docker Desktop installed.
   - Ensure Docker Engine is running.
       - If not then go to the folder where docker is installed. cd "C:\Program Files\Docker\Docker\"
       - run this command DockerCli.exe -SwitchDaemon
@@ -43,13 +45,14 @@ The current testing is done on Windows 11 OS.
   - In Manage Plugins --> Tools -> Configure JFrog CLI installations and Docker installations
   - In Manage Plugins --> System -> Configure JFrog - provide Server/Instance ID and use credentials (secret text). In advanced config - provide JFrog Artifactory URL and JFrog Distribution URL and test connection
   - Create new project petClinic-test - select pipeline option. In configuration --> pipeline select "Pipeline from SCM" and Script path as Jenkinsfile
-  - Initiate Build 
+  - Initiate Build
+  - After the build is successful use the commands provided above to pull image from JFrog and run the app as container
   
   Troubleshooting
   - If docker engine is not running, ensure docker engine is started and restart jenkins
   - Issue in step Push Image to Artifactory due to npipe - unsupported protocol
     - Open Docker Desktop. Go to Settings and enable "Expose daemon on tcp://localhost:2375 without TLS"
-    - Go to C:\ProgramData\docker\config\daemon.json and update the file as given below and restart Docker engine.
+    - Go to C:\ProgramData\docker\config\daemon.json and update the file as given below and restart Docker engine ane jenkins after docker engine is started.
         ```bash
          {
           "experimental": false,
@@ -59,7 +62,7 @@ The current testing is done on Windows 11 OS.
           ]
         }
         ```
-    
+    - In Dockerfile - using openjdk for windows as it was tested and deployed in windows 11 laptop with windows engine. if linux engine use openjdk for linux. The same is commented in the file.
 
 
 

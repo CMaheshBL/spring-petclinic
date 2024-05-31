@@ -20,5 +20,8 @@ GitHub link to the repo including (https://github.com/CMaheshBL/spring-petclinic
   -  Docker file within that repo - in the above repo
   -  readme.md file explaining the work and how to run the project - in the above repo
   -  Command to obtain and run the docker image
+      -  Pull image from JFrog: docker pull chandra2024.jfrog.io/project-docker/pet-clinic:1.0.87
+      -  Run docker image and assign local port: docker run -p 8282:8181 chandra2024.jfrog.io/project-docker/pet-clinic:1.0.87
+      -  URL to access petclinic application: http://localhost:8282/
 
 

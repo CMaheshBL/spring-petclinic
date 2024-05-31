@@ -65,6 +65,10 @@ The current testing is done on Windows 11 OS.
     - In Dockerfile - using openjdk for windows as it was tested and deployed in windows 11 laptop with windows engine. if linux engine use openjdk for linux. The same is commented in the file.
 
 
+**Jenkins Project Status**
+
+<img width="776" alt="image" src="https://github.com/CMaheshBL/spring-petclinic/assets/37871797/bf15244b-8602-4189-b47f-2aa3260b836f">
+
 
 
 

@@ -4,7 +4,7 @@ pipeline {
         jdk 'jdk17'
         maven 'maven_home'
         jfrog 'jfrog-cli'
-        docker 'docker'
+        dockerTool 'docker'
     } 
 
     stages {
